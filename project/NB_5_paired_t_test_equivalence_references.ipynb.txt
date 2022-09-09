@@ -1,0 +1,138 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Paired T-Test for Equivalence using TOST (Two One-Sided Tests)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference:**\n",
+    "https://en.wikipedia.org/wiki/Equivalence_test"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Reference:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3019319/\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference:**\n",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5502906/\n",
+    "\n",
+    "In the TOST procedure, an upper (ΔU) and lower (−ΔL) equivalence bound is specified based on the smallest effect size of interest (**SESOI**)\n",
+    "\n",
+    "**Setting Equivalence Bounds**\n",
+    "\n",
+    "\"In psychology, most theories do not state which effects are too small to be interpreted as support for the proposed underlying mechanism. Instead, feasibility considerations are often the strongest determinant of the effect sizes a researcher can reliably examine. ***In daily practice, researchers have a maximum sample size they are willing to collect in a single study (e.g., 100 participants in each between-subject condition). Given a desired level of statistical power (e.g., 80%) and a specific α (e.g., .05), this implies a smallest effect size they find worthwhile to examine or a SESOI (Lakens, 2014) they can reliably examine.*** Based on a sensitivity analysis in power analysis software (such as G*Power), we can calculate that with 100 participants in each condition, 80% desired power, and an α of .05, the SESOI in a null effect significance test is Δ = 0.389; and using the power analysis calculation for an equivalence test for independent samples, assuming a true effect size of 0, 80% power is achieved when ΔL = −0.414 and ΔU = 0.414. As such, without practical boundaries or theoretical boundaries that indicate which effect size is meaningful, the maximum sample size you are willing to collect implicitly determines your SESOI. Therefore, setting equivalence boundaries to your SESOI in an equivalence test allows you to reject effect sizes larger than you find worthwhile to examine, given available resources. When researchers are not willing (or not able) to collect a decent sample size, the extremely large equivalence bounds will make it clear they can at best reject extremely large effects, but that their data are not informative about the presence or absence of a wide range of plausible and interesting effect sizes.\"\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference1:**\n",
+    "https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Paired_T-Test_for_Equivalence.pdf\n",
+    "\n",
+    "\"The question of interest is whether two variables, each measured on the same subject, are actually\n",
+    "equivalent, that is, differ on average by a small margin, at most. This is tested by the TOST (two one-sided tests)\n",
+    "equivalence test. This test allows you to obtain a p-value so that you can quantify the results of hypothesis test.\"\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference 2:**\n",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5502906/\n",
+    "\n",
+    "\"In the TOST procedure, the null hypothesis is the presence of a true effect of ΔL or ΔU, and the alternative hypothesis is an effect that falls within the equivalence bounds or the absence of an effect that is worthwhile to examine.\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference 3:**\n",
+    "http://homepage.divms.uiowa.edu/~rdecook/stat6220/Class_notes/equivalence_testing.pdf\n",
+    "\n",
+    "If you want to show that the groups are similar, first ASSUME that they are different, and\n",
+    "then try to gather evidence to the contrary\n",
+    "(i.e. evidence that suggests they are the same).\n",
+    "\n",
+    "* This is Equivalence Testing\n",
+    "* H0 : µ1 != µ2 \n",
+    "* HA : µ1 = µ2\n",
+    "\n",
+    "***The difficult question in these tests...\n",
+    "“How close is close enough to be considered\n",
+    "‘the same’ ”?***\n",
+    "\n",
+    "Confidence interval (CI) approach:\n",
+    "\n",
+    "Construct the (1−2α) % CI for the difference in means:\n",
+    "Y1 − Y2 ± zα · se(Y1 − Y2)\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Reference 4:**\n",
+    "https://reilly-lab.github.io/Equivalence_Tutorial.html\n",
+    "\n",
+    "Under NHST (Null Hypothesis Significance Testing) the burden of proof is upon us to reject the null. That’s usually okay, but it’s a big problem when we are really interested in evaluating equivalence. That’s when you need an equivalence test. \n",
+    "      "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    ".# My notes:\n",
+    "\n",
+    "This is the ***Equivalance*** Paired T-Test.  This differs from regular Paired T-Test because it attempts to demonstrate two variables are ***equivalent***. The hypothesis in this case is swapped - we want to show the two variables are the same, so ***the hypothesis is that the two variables are different***.  We seek to disprove the hypothesis - which would allow us to conclude with some (defined high level of) confidence that the data does not show the two variables are different.\n",
+    "\n",
+    "In our case we have a robotic system that handles biological samples. The samples are held in petri dishes, and as part of the testing we need to measure oxygen percent in the dish.  A vendor manufactures a \"reader\" that can read oxygen, and we plan to embed this reader into our robotic system. The vendor provides a \"bench\" configuration where they ensure the readings are correct. The goal for the engineeering team is ensure when the device is embedded in the instrument we still get the right readings. In other words we want to demonstrate equivalence between the \"bench\" readings and readings done with the reader in the instrument.\n",
+    "\n",
+    "The experiment involves measuring a set of N cassettes.  Each is measured twice - once on the Bench and once using the Instrument.  Thus this is a \"paired\" T-Test, and we are attempting to show equivalance.\n",
+    "\n",
+    "The procedure uses two one-sided T-tests."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
